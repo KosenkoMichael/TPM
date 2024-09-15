@@ -71,9 +71,9 @@ def main():
         print(f"Decrypted text: {decrypted_text}")
 
     task = {
-        "key_generation": gibrid_system_keys_generation,
-        "encryption": gibrid_sistem_encryption,
-        "decryption": gibrid_sistem_decryption,
+        "key_generation" : gibrid_system_keys_generation,
+        "encryption"     : gibrid_sistem_encryption,
+        "decryption"     : gibrid_sistem_decryption,
     }
     task[f"{args.mode}"]()
 

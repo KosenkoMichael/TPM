@@ -27,16 +27,16 @@ class Asymmetric:
         return key_pair.public_key(), key_pair
 
     def encryption(
-        path_to_public : str,
-        path_to_symmetric_origin: str,
-        path_to_symmetric_encripted: str,
+        path_to_public              : str,
+        path_to_symmetric_origin    : str,
+        path_to_symmetric_encripted : str,
     ) -> None:
         """Symmetric key encription by asymmetric key
 
         Args:
-            path_to_public (str): path to file with public asymmetric key
-            path_to_symmetric_origin (str): path to file with original symmetric key
-            path_to_symmetric_encripted (str): path to save encripted symmetric key
+            path_to_public (str)              : path to file with public asymmetric key
+            path_to_symmetric_origin (str)    : path to file with original symmetric key
+            path_to_symmetric_encripted (str) : path to save encripted symmetric key
         """
         symmetric_key = Serialization.symmetric_key_deserialization( path_to_symmetric_origin )
         public_key = Serialization.public_key_deserialization( path_to_public )
@@ -51,16 +51,16 @@ class Asymmetric:
         Functional.write_file_bytes( path_to_symmetric_encripted, encripted_key )
 
     def decryption(
-        path_to_private: str,
-        path_to_symmetric_encripted: str,
-        path_to_symmetric_decripted: str,
+        path_to_private             : str,
+        path_to_symmetric_encripted : str,
+        path_to_symmetric_decripted : str,
     ) -> bytes:
         """Symmetric key decription by asymmetric key
 
         Args:
-            path_to_private (str): path to private key
-            path_to_symmetric_encripted (str): path to file with encrypted symmetric key
-            path_to_symmetric_decripted (str): path to file with decrypted symmetric key
+            path_to_private (str)             : path to private key
+            path_to_symmetric_encripted (str) : path to file with encrypted symmetric key
+            path_to_symmetric_decripted (str) : path to file with decrypted symmetric key
 
         Returns:
             bytes: decrypted key

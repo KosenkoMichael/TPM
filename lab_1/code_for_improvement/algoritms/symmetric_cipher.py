@@ -31,18 +31,18 @@ class Symmetric:
         return os.urandom(bytes_num)
 
     def encryption(
-        text_file_path: str,
-        path_to_symmetric: str,
-        path_to_nonce: str,
-        encrypted_text_file_path: str,
+        text_file_path           : str,
+        path_to_symmetric        : str,
+        path_to_nonce            : str,
+        encrypted_text_file_path : str,
     ) -> bytes:
         """encryption by symmetric key
 
         Args:
-            text_file_path (str): path to origin text
-            path_to_symmetric (str): path to symmetric key
-            path_to_nonce (str): path to nonce for ChaCha20
-            encrypted_text_file_path (str): file path for encrypted text
+            text_file_path (str)           : path to origin text
+            path_to_symmetric (str)        : path to symmetric key
+            path_to_nonce (str)            : path to nonce for ChaCha20
+            encrypted_text_file_path (str) : file path for encrypted text
 
         Returns:
             str: encrypted text
@@ -65,18 +65,18 @@ class Symmetric:
         return encrypted_text
 
     def decryption(
-        path_to_symmetric: str,
-        path_to_nonce: str,
-        path_to_encrypted_text: str,
-        path_to_decrypted_text: str,
+        path_to_symmetric      : str,
+        path_to_nonce          : str,
+        path_to_encrypted_text : str,
+        path_to_decrypted_text : str,
     ) -> str:
         """decryption by symmetric key
 
         Args:
-            path_to_symmetric (str): path to key
-            path_to_nonce (str): path to nonce for ChaCha20
-            path_to_encrypted_text (str): path to ebcrypted file
-            path_to_decrypted_text (str): path to decrypted file
+            path_to_symmetric (str)      : path to key
+            path_to_nonce (str)          : path to nonce for ChaCha20
+            path_to_encrypted_text (str) : path to ebcrypted file
+            path_to_decrypted_text (str) : path to decrypted file
 
         Returns:
             str: decrypted text

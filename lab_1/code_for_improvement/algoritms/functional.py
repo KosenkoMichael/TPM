@@ -34,13 +34,13 @@ class Functional:
             print(error)
 
     def write_file(
-        file_path: str,
-        data: str,
+        file_path : str,
+        data      : str,
     ) -> None:
         """write data to file
         Args:
-            file_path: path to file
-            data: data we need to write
+            file_path : path to file
+            data      : data we need to write
         """
         try:
             with open( file_path, "w", encoding = "utf-8" ) as file:
@@ -49,13 +49,13 @@ class Functional:
             print(error)
 
     def write_file_bytes(
-        file_path: str,
-        data: str,
+        file_path : str,
+        data      : str,
     ) -> None:
         """write data to file
         Args:
-            file_path: path to file
-            data: data we need to write
+            file_path : path to file
+            data      : data we need to write
         """
         try:
             with open( file_path, "wb" ) as file:

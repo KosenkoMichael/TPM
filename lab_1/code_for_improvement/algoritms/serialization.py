@@ -11,13 +11,13 @@ class Serialization:
         pass
 
     def symmetric_key_serialization(
-            file_path: str,
-            key: bytes
+            file_path : str,
+            key       : bytes
         ) -> None:
         """Serialization of the symmetric encryption key
         Args:
-            file_path: file_path for serialization
-            key: symmetric key
+            file_path : file_path for serialization
+            key       : symmetric key
         """
         try:
             with open( file_path, "wb" ) as key_file:
@@ -39,13 +39,13 @@ class Serialization:
             print(error)
 
     def public_key_serialization(
-            public_pem: str,
-            public_key: rsa.RSAPublicKey
+            public_pem : str,
+            public_key : rsa.RSAPublicKey
         ) -> None:
         """RSA public key serialization
         Args:
-            public_pem: file_path for public RSA key serialization
-            public_key: public RSA-key
+            public_pem : file_path for public RSA key serialization
+            public_key : public RSA-key
         """
         try:
             with open( public_pem, "wb" ) as public_out:
@@ -59,13 +59,13 @@ class Serialization:
             print(error)
 
     def private_key_serialization(
-        private_pem: str,
-        private_key: rsa.RSAPrivateKey
+        private_pem : str,
+        private_key : rsa.RSAPrivateKey
     ) -> None:
         """RSA private key serialization
         Args:
-            private_pem: file_path for private RSA key serialization
-            private_key: private RSA-key
+            private_pem : file_path for private RSA key serialization
+            private_key : private RSA-key
         """
         try:
             with open( private_pem, "wb" ) as private_out:
