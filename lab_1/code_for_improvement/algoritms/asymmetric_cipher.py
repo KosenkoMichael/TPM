@@ -2,26 +2,32 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives.asymmetric import rsa
 
-from constants import PRIVATE_KEY_PUBLIC_EXPONENT, PRIVATE_KEY_SIZE
+from constants import (
+    PRIVATE_KEY_PUBLIC_EXPONENT,
+    PRIVATE_KEY_SIZE,
+)
 from algoritms.serialization import Serialization
 from algoritms.functional import Functional
 
 
 class Asymmetric:
-    def __init__(self):
+    def __init__( self ):
         pass
 
-    def key_generation() -> tuple[rsa.RSAPublicKey, rsa.RSAPrivateKey]:
+    def key_generation() -> tuple[ rsa.RSAPublicKey, rsa.RSAPrivateKey ]:
         """generate asymmetric key
 
         Returns:
-            tuple[rsa.RSAPublicKey, rsa.RSAPrivateKey]: public and private keys
+            tuple[ rsa.RSAPublicKey, rsa.RSAPrivateKey ]: public and private keys
         """
-        key_pair = rsa.generate_private_key(PRIVATE_KEY_PUBLIC_EXPONENT, PRIVATE_KEY_SIZE)
+        key_pair = rsa.generate_private_key(
+            PRIVATE_KEY_PUBLIC_EXPONENT,
+            PRIVATE_KEY_SIZE,
+        )
         return key_pair.public_key(), key_pair
 
     def encryption(
-        path_to_public: str,
+        path_to_public : str,
         path_to_symmetric_origin: str,
         path_to_symmetric_encripted: str,
     ) -> None:
@@ -32,19 +38,17 @@ class Asymmetric:
             path_to_symmetric_origin (str): path to file with original symmetric key
             path_to_symmetric_encripted (str): path to save encripted symmetric key
         """
-        symmetric_key = Serialization.symmetric_key_deserialization(
-            path_to_symmetric_origin
-        )
-        public_key = Serialization.public_key_deserialization(path_to_public)
+        symmetric_key = Serialization.symmetric_key_deserialization( path_to_symmetric_origin )
+        public_key = Serialization.public_key_deserialization( path_to_public )
         encripted_key = public_key.encrypt(
             symmetric_key,
             padding.OAEP(
-                mgf = padding.MGF1(algorithm = hashes.SHA256()),
+                mgf = padding.MGF1( algorithm = hashes.SHA256() ),
                 algorithm = hashes.SHA256(),
                 label = None,
             ),
         )
-        Functional.write_file_bytes(path_to_symmetric_encripted, encripted_key)
+        Functional.write_file_bytes( path_to_symmetric_encripted, encripted_key )
 
     def decryption(
         path_to_private: str,
@@ -61,20 +65,16 @@ class Asymmetric:
         Returns:
             bytes: decrypted key
         """
-        symmetric_encripted = Serialization.symmetric_key_deserialization(
-            path_to_symmetric_encripted
-        )
-        private_key = Serialization.private_key_deserialization(path_to_private)
+        symmetric_encripted = Serialization.symmetric_key_deserialization( path_to_symmetric_encripted )
+        private_key = Serialization.private_key_deserialization( path_to_private )
         decripted_key = private_key.decrypt(
             symmetric_encripted,
             padding.OAEP(
-                mgf = padding.MGF1(algorithm = hashes.SHA256()),
+                mgf = padding.MGF1( algorithm = hashes.SHA256() ),
                 algorithm = hashes.SHA256(),
                 label = None,
             ),
         )
-        Serialization.symmetric_key_serialization(
-            path_to_symmetric_decripted, decripted_key
-        )
+        Serialization.symmetric_key_serialization( path_to_symmetric_decripted, decripted_key )
         return decripted_key
  

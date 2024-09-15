@@ -13,7 +13,9 @@ from algoritms.functional import Functional
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "mode", type = str, help = "key_generation OR encryption OR decryption"
+        "mode",
+        type = str,
+        help = "key_generation OR encryption OR decryption",
     )
     args = parser.parse_args()
 
@@ -21,15 +23,16 @@ def main():
 
     def gibrid_system_keys_generation():
         # Symmetric key generation and serialization
-        symmetric_key = Symmetric.key_generation(GYBRID_SYSTEM_SYMMETRIC_KEY_SIZE)
+        symmetric_key = Symmetric.key_generation( GYBRID_SYSTEM_SYMMETRIC_KEY_SIZE )
         Serialization.symmetric_key_serialization(
-            settings["symmetric_key"], symmetric_key
+            settings["symmetric_key"],
+            symmetric_key
         )
 
         # Asymmetric key generation and serialization
         public_key, private_key = Asymmetric.key_generation()
-        Serialization.public_key_serialization(settings["public_key"], public_key)
-        Serialization.private_key_serialization(settings["private_key"], private_key)
+        Serialization.public_key_serialization( settings["public_key"], public_key )
+        Serialization.private_key_serialization( settings["private_key"], private_key )
 
         print("keys was generated")
 

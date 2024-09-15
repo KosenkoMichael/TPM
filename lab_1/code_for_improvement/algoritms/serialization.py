@@ -7,22 +7,25 @@ from cryptography.hazmat.primitives import serialization
 
 
 class Serialization:
-    def __init__(self):
+    def __init__( self ):
         pass
 
-    def symmetric_key_serialization(file_path: str, key: bytes) -> None:
+    def symmetric_key_serialization(
+            file_path: str,
+            key: bytes
+        ) -> None:
         """Serialization of the symmetric encryption key
         Args:
             file_path: file_path for serialization
             key: symmetric key
         """
         try:
-            with open(file_path, "wb") as key_file:
+            with open( file_path, "wb" ) as key_file:
                 key_file.write(key)
         except Exception as error:
             print(error)
 
-    def symmetric_key_deserialization(file_path: str) -> bytes:
+    def symmetric_key_deserialization( file_path: str ) -> bytes:
         """Deserialization of the symmetric encryption key
         Args:
             file_path: file_path for deserialization
@@ -30,19 +33,22 @@ class Serialization:
             symmetric key
         """
         try:
-            with open(file_path, "rb") as key_file:
+            with open( file_path, "rb" ) as key_file:
                 return key_file.read()
         except Exception as error:
             print(error)
 
-    def public_key_serialization(public_pem: str, public_key: rsa.RSAPublicKey) -> None:
+    def public_key_serialization(
+            public_pem: str,
+            public_key: rsa.RSAPublicKey
+        ) -> None:
         """RSA public key serialization
         Args:
             public_pem: file_path for public RSA key serialization
             public_key: public RSA-key
         """
         try:
-            with open(public_pem, "wb") as public_out:
+            with open( public_pem, "wb" ) as public_out:
                 public_out.write(
                     public_key.public_bytes(
                         encoding = serialization.Encoding.PEM,
@@ -53,7 +59,8 @@ class Serialization:
             print(error)
 
     def private_key_serialization(
-        private_pem: str, private_key: rsa.RSAPrivateKey
+        private_pem: str,
+        private_key: rsa.RSAPrivateKey
     ) -> None:
         """RSA private key serialization
         Args:
@@ -61,7 +68,7 @@ class Serialization:
             private_key: private RSA-key
         """
         try:
-            with open(private_pem, "wb") as private_out:
+            with open( private_pem, "wb" ) as private_out:
                 private_out.write(
                     private_key.private_bytes(
                         encoding = serialization.Encoding.PEM,
@@ -72,7 +79,7 @@ class Serialization:
         except Exception as error:
             print(error)
 
-    def public_key_deserialization(public_pem: str) -> rsa.RSAPublicKey:
+    def public_key_deserialization( public_pem: str ) -> rsa.RSAPublicKey:
         """RSA public key deserialization
         Args:
             public_pem: file_path for public RSA key deserialization
@@ -80,13 +87,13 @@ class Serialization:
             RSA public Key
         """
         try:
-            with open(public_pem, "rb") as pem_in:
+            with open( public_pem, "rb" ) as pem_in:
                 public_bytes = pem_in.read()
-            return load_pem_public_key(public_bytes)
+            return load_pem_public_key( public_bytes )
         except Exception as error:
             print(error)
 
-    def private_key_deserialization(private_pem: str) -> rsa.RSAPrivateKey:
+    def private_key_deserialization( private_pem: str ) -> rsa.RSAPrivateKey:
         """RSA private key deserialization
         Args:
             private_pem: file_path for private RSA key deserialization
@@ -94,7 +101,7 @@ class Serialization:
             RSA private Key
         """
         try:
-            with open(private_pem, "rb") as pem_in:
+            with open( private_pem, "rb" ) as pem_in:
                 private_bytes = pem_in.read()
             return load_pem_private_key(
                 private_bytes,
