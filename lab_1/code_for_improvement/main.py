@@ -1,3 +1,7 @@
+"""
+main functionality of the program
+key_generation, encryption and decryption of text
+"""
 import sys
 import argparse
 

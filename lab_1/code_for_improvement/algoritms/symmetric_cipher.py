@@ -1,3 +1,7 @@
+"""
+This module implements functionality (key generation, encryption and decryption) 
+for symmetric encryption
+"""
 import os
 
 from cryptography.hazmat.primitives.ciphers import(
@@ -47,6 +51,7 @@ class Symmetric:
         Returns:
             str: encrypted text
         """
+        # Generate nonse
         nonce = Symmetric.generate_key( NONCE_SYMMETRIC_KEY_SIZE )
         Serialization.serialize_symmetric_key( path_to_nonce, nonce )
         origin_text = Functional.read_file( text_file_path )
@@ -56,10 +61,13 @@ class Symmetric:
             None,
             backend = default_backend()
         )
+        # Text padding
         padder = padding.PKCS7( PKCS7_BLOCK_SIZE ).padder()
         text_to_bytes = bytes( origin_text, "UTF-8" )
         padded_text = padder.update( text_to_bytes ) + padder.finalize()
+        # Initialize encryptor
         encryptor = cipher.encryptor()
+        # Text encryption
         encrypted_text = encryptor.update( padded_text ) + encryptor.finalize()
         Functional.write_file_bytes( encrypted_text_file_path, encrypted_text )
         return encrypted_text
@@ -81,6 +89,7 @@ class Symmetric:
         Returns:
             str: decrypted text
         """
+        # Reading nonce
         nonce = Functional.read_file_bytes( path_to_nonce )
         encrypted_text = Functional.read_file_bytes( path_to_encrypted_text )
         symmetric_key = Serialization.deserialize_symmetric_key( path_to_symmetric )
@@ -89,8 +98,11 @@ class Symmetric:
             mode = None,
             backend = default_backend(),
         )
+        # Initialize decryptor
         decryptor = cipher.decryptor()
+        # Text decryption
         decrypted_text = decryptor.update( encrypted_text ) + decryptor.finalize()
+        # Text unpadding
         unpadder = padding.PKCS7( PKCS7_BLOCK_SIZE ).unpadder()
         unpadded_dc_text = unpadder.update( decrypted_text ) + unpadder.finalize()
         dec_unpad_text = unpadded_dc_text.decode("UTF-8")

@@ -1,3 +1,6 @@
+"""
+This module implements the functionality of serialization and deserialization of encryption keys
+"""
 from cryptography.hazmat.primitives.serialization import (
     load_pem_public_key,
     load_pem_private_key,

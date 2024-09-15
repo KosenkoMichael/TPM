@@ -1,3 +1,6 @@
+"""
+This module implements the functionality of reading/writing to a file
+"""
 import json
 
 

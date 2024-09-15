@@ -1,3 +1,7 @@
+"""
+This module implements functionality (key generation, encryption and decryption) 
+for asymmetric encryption
+"""
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives.asymmetric import rsa
@@ -65,7 +69,9 @@ class Asymmetric:
         Returns:
             bytes: decrypted key
         """
-        symmetric_encripted = Serialization.deserialize_symmetric_key( path_to_symmetric_encripted )
+        symmetric_encripted = Serialization.deserialize_symmetric_key(
+            path_to_symmetric_encripted
+        )
         private_key = Serialization.deserialize_private_key( path_to_private )
         decripted_key = private_key.decrypt(
             symmetric_encripted,
