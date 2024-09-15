@@ -78,8 +78,8 @@ class Symmetric:
         symmetric_key = Serialization.symmetric_key_deserialization(path_to_symmetric)
         cipher = Cipher(
             algorithms.ChaCha20(symmetric_key, nonce),
-            mode=None,
-            backend=default_backend(),
+            mode = None,
+            backend = default_backend(),
         )
         decryptor = cipher.decryptor()
         decrypted_text = decryptor.update(encrypted_text) + decryptor.finalize()

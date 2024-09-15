@@ -39,9 +39,9 @@ class Asymmetric:
         encripted_key = public_key.encrypt(
             symmetric_key,
             padding.OAEP(
-                mgf=padding.MGF1(algorithm=hashes.SHA256()),
-                algorithm=hashes.SHA256(),
-                label=None,
+                mgf = padding.MGF1(algorithm = hashes.SHA256()),
+                algorithm = hashes.SHA256(),
+                label = None,
             ),
         )
         Functional.write_file_bytes(path_to_symmetric_encripted, encripted_key)
@@ -68,9 +68,9 @@ class Asymmetric:
         decripted_key = private_key.decrypt(
             symmetric_encripted,
             padding.OAEP(
-                mgf=padding.MGF1(algorithm=hashes.SHA256()),
-                algorithm=hashes.SHA256(),
-                label=None,
+                mgf = padding.MGF1(algorithm = hashes.SHA256()),
+                algorithm = hashes.SHA256(),
+                label = None,
             ),
         )
         Serialization.symmetric_key_serialization(

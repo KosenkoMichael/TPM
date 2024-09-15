@@ -45,8 +45,8 @@ class Serialization:
             with open(public_pem, "wb") as public_out:
                 public_out.write(
                     public_key.public_bytes(
-                        encoding=serialization.Encoding.PEM,
-                        format=serialization.PublicFormat.SubjectPublicKeyInfo,
+                        encoding = serialization.Encoding.PEM,
+                        format = serialization.PublicFormat.SubjectPublicKeyInfo,
                     )
                 )
         except Exception as error:
@@ -64,9 +64,9 @@ class Serialization:
             with open(private_pem, "wb") as private_out:
                 private_out.write(
                     private_key.private_bytes(
-                        encoding=serialization.Encoding.PEM,
-                        format=serialization.PrivateFormat.TraditionalOpenSSL,
-                        encryption_algorithm=serialization.NoEncryption(),
+                        encoding = serialization.Encoding.PEM,
+                        format = serialization.PrivateFormat.TraditionalOpenSSL,
+                        encryption_algorithm = serialization.NoEncryption(),
                     )
                 )
         except Exception as error:
@@ -98,7 +98,7 @@ class Serialization:
                 private_bytes = pem_in.read()
             return load_pem_private_key(
                 private_bytes,
-                password=None,
+                password = None,
             )
         except Exception as error:
             print(error)

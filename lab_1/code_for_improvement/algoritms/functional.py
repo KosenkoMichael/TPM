@@ -13,7 +13,7 @@ class Functional:
             file data
         """
         try:
-            with open(file_path, "r", encoding="utf-8") as file:
+            with open(file_path, "r", encoding = "utf-8") as file:
                 data = file.read()
             return data
         except Exception as error:
@@ -43,7 +43,7 @@ class Functional:
             data: data we need to write
         """
         try:
-            with open(file_path, "w", encoding="utf-8") as file:
+            with open(file_path, "w", encoding = "utf-8") as file:
                 file.write(data)
         except Exception as error:
             print(error)
@@ -70,6 +70,6 @@ class Functional:
         Returns:
             file data
         """
-        with open(path, "r", encoding="UTF-8") as file:
+        with open(path, "r", encoding = "UTF-8") as file:
             return json.load(file)
  

@@ -13,7 +13,7 @@ from algoritms.functional import Functional
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "mode", type=str, help="key_generation OR encryption OR decryption"
+        "mode", type = str, help = "key_generation OR encryption OR decryption"
     )
     args = parser.parse_args()
 
