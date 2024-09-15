@@ -4,6 +4,7 @@ from cryptography.hazmat.primitives.ciphers import Cipher, algorithms
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import padding
 
+from constants import NONCE_SYMMETRIC_KEY_SIZE, PKCS7_BLOCK_SIZE
 from serialization import Serialization
 from functional import Functional
 
@@ -40,14 +41,14 @@ class Symmetric:
         Returns:
             str: encrypted text
         """
-        nonce = Symmetric.key_generation(16)
+        nonce = Symmetric.key_generation(NONCE_SYMMETRIC_KEY_SIZE)
         Serialization.symmetric_key_serialization(path_to_nonce, nonce)
         origin_text = Functional.read_file(text_file_path)
         symmetric_key = Serialization.symmetric_key_deserialization(path_to_symmetric)
         cipher = Cipher(
             algorithms.ChaCha20(symmetric_key, nonce), None, backend=default_backend()
         )
-        padder = padding.PKCS7(256).padder()
+        padder = padding.PKCS7(PKCS7_BLOCK_SIZE).padder()
         text_to_bytes = bytes(origin_text, "UTF-8")
         padded_text = padder.update(text_to_bytes) + padder.finalize()
         encryptor = cipher.encryptor()
@@ -82,7 +83,7 @@ class Symmetric:
         )
         decryptor = cipher.decryptor()
         decrypted_text = decryptor.update(encrypted_text) + decryptor.finalize()
-        unpadder = padding.PKCS7(256).unpadder()
+        unpadder = padding.PKCS7(PKCS7_BLOCK_SIZE).unpadder()
         unpadded_dc_text = unpadder.update(decrypted_text) + unpadder.finalize()
         dec_unpad_text = unpadded_dc_text.decode("UTF-8")
         Functional.write_file(path_to_decrypted_text, dec_unpad_text)

@@ -3,7 +3,7 @@ import argparse
 
 sys.path.append("algoritms")
 
-
+from constants import GYBRID_SYSTEM_SYMMETRIC_KEY_SIZE
 from algoritms.asymmetric_cipher import Asymmetric
 from algoritms.symmetric_cipher import Symmetric
 from algoritms.serialization import Serialization
@@ -21,7 +21,7 @@ def main():
 
     def gibrid_system_keys_generation():
         # Symmetric key generation and serialization
-        symmetric_key = Symmetric.key_generation(32)
+        symmetric_key = Symmetric.key_generation(GYBRID_SYSTEM_SYMMETRIC_KEY_SIZE)
         Serialization.symmetric_key_serialization(
             settings["symmetric_key"], symmetric_key
         )

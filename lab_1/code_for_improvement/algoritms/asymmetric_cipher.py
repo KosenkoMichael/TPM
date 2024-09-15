@@ -2,6 +2,7 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives.asymmetric import rsa
 
+from constants import PRIVATE_KEY_PUBLIC_EXPONENT, PRIVATE_KEY_SIZE
 from algoritms.serialization import Serialization
 from algoritms.functional import Functional
 
@@ -16,7 +17,7 @@ class Asymmetric:
         Returns:
             tuple[rsa.RSAPublicKey, rsa.RSAPrivateKey]: public and private keys
         """
-        key_pair = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+        key_pair = rsa.generate_private_key(PRIVATE_KEY_PUBLIC_EXPONENT, PRIVATE_KEY_SIZE)
         return key_pair.public_key(), key_pair
 
     def encryption(
