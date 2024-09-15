@@ -19,7 +19,7 @@ class Symmetric:
     def __init__(self):
         pass
 
-    def key_generation( bytes_num: int ) -> bytes:
+    def generate_key( bytes_num: int ) -> bytes:
         """generate symmetric key
 
         Args:
@@ -30,7 +30,7 @@ class Symmetric:
         """
         return os.urandom(bytes_num)
 
-    def encryption(
+    def encrypt(
         text_file_path           : str,
         path_to_symmetric        : str,
         path_to_nonce            : str,
@@ -47,10 +47,10 @@ class Symmetric:
         Returns:
             str: encrypted text
         """
-        nonce = Symmetric.key_generation( NONCE_SYMMETRIC_KEY_SIZE )
-        Serialization.symmetric_key_serialization( path_to_nonce, nonce )
+        nonce = Symmetric.generate_key( NONCE_SYMMETRIC_KEY_SIZE )
+        Serialization.serialize_symmetric_key( path_to_nonce, nonce )
         origin_text = Functional.read_file( text_file_path )
-        symmetric_key = Serialization.symmetric_key_deserialization( path_to_symmetric )
+        symmetric_key = Serialization.deserialize_symmetric_key( path_to_symmetric )
         cipher = Cipher(
             algorithms.ChaCha20( symmetric_key, nonce ),
             None,
@@ -64,7 +64,7 @@ class Symmetric:
         Functional.write_file_bytes( encrypted_text_file_path, encrypted_text )
         return encrypted_text
 
-    def decryption(
+    def decrypt(
         path_to_symmetric      : str,
         path_to_nonce          : str,
         path_to_encrypted_text : str,
@@ -83,7 +83,7 @@ class Symmetric:
         """
         nonce = Functional.read_file_bytes( path_to_nonce )
         encrypted_text = Functional.read_file_bytes( path_to_encrypted_text )
-        symmetric_key = Serialization.symmetric_key_deserialization( path_to_symmetric )
+        symmetric_key = Serialization.deserialize_symmetric_key( path_to_symmetric )
         cipher = Cipher(
             algorithms.ChaCha20( symmetric_key, nonce ),
             mode = None,

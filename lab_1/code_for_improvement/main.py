@@ -21,31 +21,31 @@ def main():
 
     settings = Functional.read_json("settings.json")
 
-    def gibrid_system_keys_generation():
+    def generate_gibrid_system_keys():
         # Symmetric key generation and serialization
-        symmetric_key = Symmetric.key_generation( GYBRID_SYSTEM_SYMMETRIC_KEY_SIZE )
-        Serialization.symmetric_key_serialization(
+        symmetric_key = Symmetric.generate_key( GYBRID_SYSTEM_SYMMETRIC_KEY_SIZE )
+        Serialization.serialize_symmetric_key(
             settings["symmetric_key"],
             symmetric_key
         )
 
         # Asymmetric key generation and serialization
-        public_key, private_key = Asymmetric.key_generation()
-        Serialization.public_key_serialization( settings["public_key"], public_key )
-        Serialization.private_key_serialization( settings["private_key"], private_key )
+        public_key, private_key = Asymmetric.generate_key()
+        Serialization.serialize_public_key( settings["public_key"], public_key )
+        Serialization.serialize_private_key( settings["private_key"], private_key )
 
         print("keys was generated")
 
-    def gibrid_sistem_encryption():
+    def encrypt_gibrid_sistem():
         # Text encryption
-        encrypted_text = Symmetric.encryption(
+        encrypted_text = Symmetric.encrypt(
             settings["initial_file"],
             settings["symmetric_key"],
             settings["nonce"],
             settings["encrypted_file"],
         )
         # Symmetric key encryption
-        Asymmetric.encryption(
+        Asymmetric.encrypt(
             settings["public_key"],
             settings["symmetric_key"],
             settings["encrypted_symmetric_key"],
@@ -53,16 +53,16 @@ def main():
 
         print("text was encrypted")
 
-    def gibrid_sistem_decryption():
+    def decrypt_gibrid_sistem():
         # Symmetric key decryption
-        Asymmetric.decryption(
+        Asymmetric.decrypt(
             settings["private_key"],
             settings["encrypted_symmetric_key"],
             settings["decrypted_symmetric_key"],
         )
 
         # Text decryption
-        decrypted_text = Symmetric.decryption(
+        decrypted_text = Symmetric.decrypt(
             settings["symmetric_key"],
             settings["nonce"],
             settings["encrypted_file"],
@@ -71,9 +71,9 @@ def main():
         print(f"Decrypted text: {decrypted_text}")
 
     task = {
-        "key_generation" : gibrid_system_keys_generation,
-        "encryption"     : gibrid_sistem_encryption,
-        "decryption"     : gibrid_sistem_decryption,
+        "key_generation" : generate_gibrid_system_keys,
+        "encryption"     : encrypt_gibrid_sistem,
+        "decryption"     : decrypt_gibrid_sistem,
     }
     task[f"{args.mode}"]()
 

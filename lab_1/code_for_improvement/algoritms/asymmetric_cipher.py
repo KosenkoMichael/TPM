@@ -14,7 +14,7 @@ class Asymmetric:
     def __init__( self ):
         pass
 
-    def key_generation() -> tuple[ rsa.RSAPublicKey, rsa.RSAPrivateKey ]:
+    def generate_key() -> tuple[ rsa.RSAPublicKey, rsa.RSAPrivateKey ]:
         """generate asymmetric key
 
         Returns:
@@ -26,7 +26,7 @@ class Asymmetric:
         )
         return key_pair.public_key(), key_pair
 
-    def encryption(
+    def encrypt(
         path_to_public              : str,
         path_to_symmetric_origin    : str,
         path_to_symmetric_encripted : str,
@@ -38,8 +38,8 @@ class Asymmetric:
             path_to_symmetric_origin (str)    : path to file with original symmetric key
             path_to_symmetric_encripted (str) : path to save encripted symmetric key
         """
-        symmetric_key = Serialization.symmetric_key_deserialization( path_to_symmetric_origin )
-        public_key = Serialization.public_key_deserialization( path_to_public )
+        symmetric_key = Serialization.deserialize_symmetric_key( path_to_symmetric_origin )
+        public_key = Serialization.deserialize_public_key( path_to_public )
         encripted_key = public_key.encrypt(
             symmetric_key,
             padding.OAEP(
@@ -50,7 +50,7 @@ class Asymmetric:
         )
         Functional.write_file_bytes( path_to_symmetric_encripted, encripted_key )
 
-    def decryption(
+    def decrypt(
         path_to_private             : str,
         path_to_symmetric_encripted : str,
         path_to_symmetric_decripted : str,
@@ -65,8 +65,8 @@ class Asymmetric:
         Returns:
             bytes: decrypted key
         """
-        symmetric_encripted = Serialization.symmetric_key_deserialization( path_to_symmetric_encripted )
-        private_key = Serialization.private_key_deserialization( path_to_private )
+        symmetric_encripted = Serialization.deserialize_symmetric_key( path_to_symmetric_encripted )
+        private_key = Serialization.deserialize_private_key( path_to_private )
         decripted_key = private_key.decrypt(
             symmetric_encripted,
             padding.OAEP(
@@ -75,6 +75,6 @@ class Asymmetric:
                 label = None,
             ),
         )
-        Serialization.symmetric_key_serialization( path_to_symmetric_decripted, decripted_key )
+        Serialization.serialize_symmetric_key( path_to_symmetric_decripted, decripted_key )
         return decripted_key
  

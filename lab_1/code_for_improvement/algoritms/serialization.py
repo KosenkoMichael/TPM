@@ -10,7 +10,7 @@ class Serialization:
     def __init__( self ):
         pass
 
-    def symmetric_key_serialization(
+    def serialize_symmetric_key(
             file_path : str,
             key       : bytes
         ) -> None:
@@ -25,7 +25,7 @@ class Serialization:
         except Exception as error:
             print(error)
 
-    def symmetric_key_deserialization( file_path: str ) -> bytes:
+    def deserialize_symmetric_key( file_path: str ) -> bytes:
         """Deserialization of the symmetric encryption key
         Args:
             file_path: file_path for deserialization
@@ -38,7 +38,7 @@ class Serialization:
         except Exception as error:
             print(error)
 
-    def public_key_serialization(
+    def serialize_public_key(
             public_pem : str,
             public_key : rsa.RSAPublicKey
         ) -> None:
@@ -58,7 +58,7 @@ class Serialization:
         except Exception as error:
             print(error)
 
-    def private_key_serialization(
+    def serialize_private_key(
         private_pem : str,
         private_key : rsa.RSAPrivateKey
     ) -> None:
@@ -79,7 +79,7 @@ class Serialization:
         except Exception as error:
             print(error)
 
-    def public_key_deserialization( public_pem: str ) -> rsa.RSAPublicKey:
+    def deserialize_public_key( public_pem: str ) -> rsa.RSAPublicKey:
         """RSA public key deserialization
         Args:
             public_pem: file_path for public RSA key deserialization
@@ -93,7 +93,7 @@ class Serialization:
         except Exception as error:
             print(error)
 
-    def private_key_deserialization( private_pem: str ) -> rsa.RSAPrivateKey:
+    def deserialize_private_key( private_pem: str ) -> rsa.RSAPrivateKey:
         """RSA private key deserialization
         Args:
             private_pem: file_path for private RSA key deserialization
