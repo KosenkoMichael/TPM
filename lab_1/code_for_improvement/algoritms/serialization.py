@@ -10,6 +10,10 @@ from cryptography.hazmat.primitives import serialization
 
 
 class Serialization:
+    """
+    This class contains the definition of functions for serializing
+    and deserializing symmetric and asymmetric encryption keys
+    """
     def __init__( self ):
         pass
 

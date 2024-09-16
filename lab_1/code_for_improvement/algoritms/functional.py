@@ -5,6 +5,9 @@ import json
 
 
 class Functional:
+    """
+    This class contains the definition of functions for reading and writing files
+    """
     def __init__( self ):
         pass
 

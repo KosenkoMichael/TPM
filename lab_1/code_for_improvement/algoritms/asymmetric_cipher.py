@@ -15,6 +15,10 @@ from algoritms.functional import Functional
 
 
 class Asymmetric:
+    """
+    This class provides the definition of functions for generating key pair for
+    asymmetric encryption, as well as encryption and decryption using them
+    """
     def __init__( self ):
         pass
 

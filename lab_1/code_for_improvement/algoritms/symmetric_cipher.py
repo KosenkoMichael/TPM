@@ -20,6 +20,10 @@ from functional import Functional
 
 
 class Symmetric:
+    """
+    This class provides the definition of key generation functions for
+    symmetric encryption, as well as encryption and decryption using it
+    """
     def __init__(self):
         pass
 
