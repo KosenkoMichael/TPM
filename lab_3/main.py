@@ -47,7 +47,7 @@ def csv_check(file_path):
         next(reader)
         for i, row in enumerate(reader, start=0):
             if not row_check(row):
-                result.append(i-2)
+                result.append(i)
     return result
 
 
