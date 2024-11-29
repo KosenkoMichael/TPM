@@ -30,7 +30,7 @@ def setup_logging()-> None:
         backupCount=0
     )
     info_handler.setFormatter(
-        logging.Formatter("%(asctime)s - %(name)-17s - %(funcName)-25s - %(levelname)-7s - %(message)s")
+        logging.Formatter("%(asctime)s - %(name)11s - %(filename)20s - %(funcName)25s - %(levelname)7s - %(message)s")
     )
     info_logger.addHandler(info_handler)
 
@@ -43,7 +43,7 @@ def setup_logging()-> None:
         backupCount=0,
     )
     error_handler.setFormatter(
-        logging.Formatter("%(asctime)s - %(name)-17s - %(funcName)-10s - %(levelname)-7s - %(message)s")
+        logging.Formatter("%(asctime)s - %(name)11s - %(filename)20s - %(funcName)10s - %(levelname)7s - %(message)s")
     )
     error_logger.addHandler(error_handler)
 

@@ -1,64 +1,36 @@
-2024-11-29 22:43:34,823 - info_logger       - main                      - INFO    - programm has started
-2024-11-29 22:43:34,828 - info_logger       - read_json                 - INFO    - reading from settings.json
-2024-11-29 22:43:34,828 - info_logger       - main                      - INFO    - params: settings.json and test mode
-2024-11-29 22:43:34,828 - info_logger       - generate_key              - INFO    - symmetric key was generated len = 32 bytes
-2024-11-29 22:43:34,828 - info_logger       - serialize_symmetric_key   - INFO    - serialization to keys/symmetric/symmetric_key.txt
-2024-11-29 22:43:34,860 - info_logger       - generate_key              - INFO    - asymmetric key was generated len = 65537/2048 bytes
-2024-11-29 22:43:34,861 - info_logger       - serialize_public_key      - INFO    - serialization to keys/asymmetric/public.pem
-2024-11-29 22:43:34,861 - info_logger       - serialize_private_key     - INFO    - serialization to keys/asymmetric/private.pem
-2024-11-29 22:43:34,861 - info_logger       - generate_key              - INFO    - symmetric key was generated len = 16 bytes
-2024-11-29 22:43:34,861 - info_logger       - serialize_symmetric_key   - INFO    - serialization to keys/symmetric/nonce.txt
-2024-11-29 22:43:34,861 - info_logger       - read_file                 - INFO    - reading from text/initial_text.txt
-2024-11-29 22:43:34,866 - info_logger       - deserialize_symmetric_key - INFO    - deserialization from keys/symmetric/symmetric_key.txt
-2024-11-29 22:43:34,869 - info_logger       - write_file_bytes          - INFO    - writing(bytes) to text/encrypted_text.txt
-2024-11-29 22:43:34,870 - info_logger       - encrypt                   - INFO    - encrypt from text/initial_text.txt to text/encrypted_text.txt
-2024-11-29 22:43:34,870 - info_logger       - deserialize_symmetric_key - INFO    - deserialization from keys/symmetric/symmetric_key.txt
-2024-11-29 22:43:34,873 - info_logger       - deserialize_public_key    - INFO    - deserialization from keys/asymmetric/public.pem
-2024-11-29 22:43:34,874 - info_logger       - encrypt                   - INFO    - encrypt from keys/symmetric/symmetric_key.txt to keys/symmetric/encrypted.txt
-2024-11-29 22:43:34,874 - info_logger       - write_file_bytes          - INFO    - writing(bytes) to keys/symmetric/encrypted.txt
-2024-11-29 22:43:34,876 - info_logger       - deserialize_symmetric_key - INFO    - deserialization from keys/symmetric/encrypted.txt
-2024-11-29 22:43:34,880 - info_logger       - deserialize_private_key   - INFO    - deserialization from keys/asymmetric/private.pem
-2024-11-29 22:43:34,907 - info_logger       - decrypt                   - INFO    - decrypt from keys/symmetric/encrypted.txt to keys/symmetric/decrypted.txt
-2024-11-29 22:43:34,908 - info_logger       - serialize_symmetric_key   - INFO    - serialization to keys/symmetric/decrypted.txt
-2024-11-29 22:43:34,911 - info_logger       - read_file_bytes           - INFO    - reading(bytes) from keys/symmetric/nonce.txt
-2024-11-29 22:43:34,922 - info_logger       - read_file_bytes           - INFO    - reading(bytes) from text/encrypted_text.txt
-2024-11-29 22:43:34,922 - info_logger       - deserialize_symmetric_key - INFO    - deserialization from keys/symmetric/symmetric_key.txt
-2024-11-29 22:43:34,923 - info_logger       - write_file                - INFO    - writing to text/decrypted_text.txt
-2024-11-29 22:43:34,923 - info_logger       - decrypt                   - INFO    - decrypt from text/encrypted_text.txt to text/decrypted_text.txt
-2024-11-29 22:43:34,923 - info_logger       - main                      - INFO    - programm has ended
-2024-11-29 22:43:41,066 - info_logger       - main                      - INFO    - programm has started
-2024-11-29 22:43:41,071 - info_logger       - read_json                 - INFO    - reading from settings.json
-2024-11-29 22:43:41,071 - info_logger       - main                      - INFO    - params: settings.json and key_generation mode
-2024-11-29 22:43:41,071 - info_logger       - generate_key              - INFO    - symmetric key was generated len = 32 bytes
-2024-11-29 22:43:41,071 - info_logger       - serialize_symmetric_key   - INFO    - serialization to keys/symmetric/symmetric_key.txt
-2024-11-29 22:43:41,120 - info_logger       - generate_key              - INFO    - asymmetric key was generated len = 65537/2048 bytes
-2024-11-29 22:43:41,120 - info_logger       - serialize_public_key      - INFO    - serialization to keys/asymmetric/public.pem
-2024-11-29 22:43:41,121 - info_logger       - serialize_private_key     - INFO    - serialization to keys/asymmetric/private.pem
-2024-11-29 22:43:41,121 - info_logger       - main                      - INFO    - programm has ended
-2024-11-29 22:43:43,111 - info_logger       - main                      - INFO    - programm has started
-2024-11-29 22:43:43,116 - info_logger       - read_json                 - INFO    - reading from settings.json
-2024-11-29 22:43:43,116 - info_logger       - main                      - INFO    - params: settings.json and encryption mode
-2024-11-29 22:43:43,116 - info_logger       - generate_key              - INFO    - symmetric key was generated len = 16 bytes
-2024-11-29 22:43:43,116 - info_logger       - serialize_symmetric_key   - INFO    - serialization to keys/symmetric/nonce.txt
-2024-11-29 22:43:43,116 - info_logger       - read_file                 - INFO    - reading from text/initial_text.txt
-2024-11-29 22:43:43,120 - info_logger       - deserialize_symmetric_key - INFO    - deserialization from keys/symmetric/symmetric_key.txt
-2024-11-29 22:43:43,124 - info_logger       - write_file_bytes          - INFO    - writing(bytes) to text/encrypted_text.txt
-2024-11-29 22:43:43,124 - info_logger       - encrypt                   - INFO    - encrypt from text/initial_text.txt to text/encrypted_text.txt
-2024-11-29 22:43:43,124 - info_logger       - deserialize_symmetric_key - INFO    - deserialization from keys/symmetric/symmetric_key.txt
-2024-11-29 22:43:43,128 - info_logger       - deserialize_public_key    - INFO    - deserialization from keys/asymmetric/public.pem
-2024-11-29 22:43:43,129 - info_logger       - encrypt                   - INFO    - encrypt from keys/symmetric/symmetric_key.txt to keys/symmetric/encrypted.txt
-2024-11-29 22:43:43,129 - info_logger       - write_file_bytes          - INFO    - writing(bytes) to keys/symmetric/encrypted.txt
-2024-11-29 22:43:43,129 - info_logger       - main                      - INFO    - programm has ended
-2024-11-29 22:43:45,518 - info_logger       - main                      - INFO    - programm has started
-2024-11-29 22:43:45,524 - info_logger       - read_json                 - INFO    - reading from settings.json
-2024-11-29 22:43:45,524 - info_logger       - main                      - INFO    - params: settings.json and decryption mode
-2024-11-29 22:43:45,528 - info_logger       - deserialize_symmetric_key - INFO    - deserialization from keys/symmetric/encrypted.txt
-2024-11-29 22:43:45,531 - info_logger       - deserialize_private_key   - INFO    - deserialization from keys/asymmetric/private.pem
-2024-11-29 22:43:45,561 - info_logger       - decrypt                   - INFO    - decrypt from keys/symmetric/encrypted.txt to keys/symmetric/decrypted.txt
-2024-11-29 22:43:45,561 - info_logger       - serialize_symmetric_key   - INFO    - serialization to keys/symmetric/decrypted.txt
-2024-11-29 22:43:45,565 - info_logger       - read_file_bytes           - INFO    - reading(bytes) from keys/symmetric/nonce.txt
-2024-11-29 22:43:45,568 - info_logger       - read_file_bytes           - INFO    - reading(bytes) from text/encrypted_text.txt
-2024-11-29 22:43:45,568 - info_logger       - deserialize_symmetric_key - INFO    - deserialization from keys/symmetric/symmetric_key.txt
-2024-11-29 22:43:45,571 - info_logger       - write_file                - INFO    - writing to text/decrypted_text.txt
-2024-11-29 22:43:45,571 - info_logger       - decrypt                   - INFO    - decrypt from text/encrypted_text.txt to text/decrypted_text.txt
-2024-11-29 22:43:45,571 - info_logger       - main                      - INFO    - programm has ended
+2024-11-29 22:51:39,547 - info_logger -              main.py -                      main -    INFO - programm has started
+2024-11-29 22:51:39,552 - info_logger -        functional.py -                 read_json -    INFO - reading from settings.json
+2024-11-29 22:51:39,552 - info_logger -              main.py -                      main -    INFO - params: settings.json and key_generation mode
+2024-11-29 22:51:39,552 - info_logger -  symmetric_cipher.py -              generate_key -    INFO - symmetric key was generated len = 32 bytes
+2024-11-29 22:51:39,553 - info_logger -     serialization.py -   serialize_symmetric_key -    INFO - serialization to keys/symmetric/symmetric_key.txt
+2024-11-29 22:51:39,591 - info_logger - asymmetric_cipher.py -              generate_key -    INFO - asymmetric key was generated len = 65537/2048 bytes
+2024-11-29 22:51:39,592 - info_logger -     serialization.py -      serialize_public_key -    INFO - serialization to keys/asymmetric/public.pem
+2024-11-29 22:51:39,592 - info_logger -     serialization.py -     serialize_private_key -    INFO - serialization to keys/asymmetric/private.pem
+2024-11-29 22:51:39,592 - info_logger -              main.py -                      main -    INFO - programm has ended
+2024-11-29 22:51:45,802 - info_logger -              main.py -                      main -    INFO - programm has started
+2024-11-29 22:51:45,808 - info_logger -        functional.py -                 read_json -    INFO - reading from settings.json
+2024-11-29 22:51:45,808 - info_logger -              main.py -                      main -    INFO - params: settings.json and encryption mode
+2024-11-29 22:51:45,808 - info_logger -  symmetric_cipher.py -              generate_key -    INFO - symmetric key was generated len = 16 bytes
+2024-11-29 22:51:45,808 - info_logger -     serialization.py -   serialize_symmetric_key -    INFO - serialization to keys/symmetric/nonce.txt
+2024-11-29 22:51:45,808 - info_logger -        functional.py -                 read_file -    INFO - reading from text/initial_text.txt
+2024-11-29 22:51:45,813 - info_logger -     serialization.py - deserialize_symmetric_key -    INFO - deserialization from keys/symmetric/symmetric_key.txt
+2024-11-29 22:51:45,817 - info_logger -        functional.py -          write_file_bytes -    INFO - writing(bytes) to text/encrypted_text.txt
+2024-11-29 22:51:45,817 - info_logger -  symmetric_cipher.py -                   encrypt -    INFO - encrypt from text/initial_text.txt to text/encrypted_text.txt
+2024-11-29 22:51:45,817 - info_logger -     serialization.py - deserialize_symmetric_key -    INFO - deserialization from keys/symmetric/symmetric_key.txt
+2024-11-29 22:51:45,821 - info_logger -     serialization.py -    deserialize_public_key -    INFO - deserialization from keys/asymmetric/public.pem
+2024-11-29 22:51:45,823 - info_logger - asymmetric_cipher.py -                   encrypt -    INFO - encrypt from keys/symmetric/symmetric_key.txt to keys/symmetric/encrypted.txt
+2024-11-29 22:51:45,823 - info_logger -        functional.py -          write_file_bytes -    INFO - writing(bytes) to keys/symmetric/encrypted.txt
+2024-11-29 22:51:45,823 - info_logger -              main.py -                      main -    INFO - programm has ended
+2024-11-29 22:51:50,885 - info_logger -              main.py -                      main -    INFO - programm has started
+2024-11-29 22:51:50,889 - info_logger -        functional.py -                 read_json -    INFO - reading from settings.json
+2024-11-29 22:51:50,890 - info_logger -              main.py -                      main -    INFO - params: settings.json and decryption mode
+2024-11-29 22:51:50,895 - info_logger -     serialization.py - deserialize_symmetric_key -    INFO - deserialization from keys/symmetric/encrypted.txt
+2024-11-29 22:51:50,899 - info_logger -     serialization.py -   deserialize_private_key -    INFO - deserialization from keys/asymmetric/private.pem
+2024-11-29 22:51:50,928 - info_logger - asymmetric_cipher.py -                   decrypt -    INFO - decrypt from keys/symmetric/encrypted.txt to keys/symmetric/decrypted.txt
+2024-11-29 22:51:50,929 - info_logger -     serialization.py -   serialize_symmetric_key -    INFO - serialization to keys/symmetric/decrypted.txt
+2024-11-29 22:51:50,932 - info_logger -        functional.py -           read_file_bytes -    INFO - reading(bytes) from keys/symmetric/nonce.txt
+2024-11-29 22:51:50,935 - info_logger -        functional.py -           read_file_bytes -    INFO - reading(bytes) from text/encrypted_text.txt
+2024-11-29 22:51:50,935 - info_logger -     serialization.py - deserialize_symmetric_key -    INFO - deserialization from keys/symmetric/symmetric_key.txt
+2024-11-29 22:51:50,938 - info_logger -        functional.py -                write_file -    INFO - writing to text/decrypted_text.txt
+2024-11-29 22:51:50,938 - info_logger -  symmetric_cipher.py -                   decrypt -    INFO - decrypt from text/encrypted_text.txt to text/decrypted_text.txt
+2024-11-29 22:51:50,938 - info_logger -              main.py -                      main -    INFO - programm has ended

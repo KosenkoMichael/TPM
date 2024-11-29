@@ -1,4 +1,5 @@
-2024-11-29 22:40:55,323 - error_logger      - main       - ERROR   - mode not_allow is not allow
-2024-11-29 22:41:30,762 - error_logger      - decrypt    - ERROR   - can't concat str to bytes
-2024-11-29 22:42:16,034 - error_logger      - read_json  - ERROR   - [Errno 2] No such file or directory: 'settings0.json'
-2024-11-29 22:42:44,490 - error_logger      - decrypt    - ERROR   - Invalid padding bytes.
+2024-11-29 22:49:27,535 - error_logger -              main.py -       main -   ERROR - mode test^ is not allow
+2024-11-29 22:49:56,316 - error_logger -        functional.py -  read_json -   ERROR - [Errno 2] No such file or directory: 'settings0.json'
+2024-11-29 22:50:16,494 - error_logger - asymmetric_cipher.py -    encrypt -   ERROR - module 'cryptography.hazmat.primitives.hashes' has no attribute 'SHA257'
+2024-11-29 22:50:16,525 - error_logger - asymmetric_cipher.py -    decrypt -   ERROR - Decryption failed
+2024-11-29 22:50:55,335 - error_logger -  symmetric_cipher.py -    decrypt -   ERROR - can't concat str to bytes
