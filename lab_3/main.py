@@ -6,7 +6,7 @@ import checksum
 
 
 telephone_pattern = r"^\+7\-\(\d{3}\)\-\d{3}\-\d{2}\-\d{2}$"
-height_pattern = r"^([1-2]\.\d{2}|3\.00)$"
+height_pattern = r"^(1\.[4-9]\d|2\.[0-4]\d|2\.50)$"
 inn_pattern = r"^\d{12}$"
 identifier_pattern = r"^\d{2}-\d{2}/\d{2}$"
 occupation_pattern = r"^[A-Za-zА-Яа-яёЁ\s-]+$"
