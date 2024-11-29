@@ -1,0 +1,28 @@
+2024-11-29 21:27:44,183 - main              - INFO    - programm has started
+2024-11-29 21:27:44,187 - functional        - INFO    - reading from settings.json
+2024-11-29 21:27:44,187 - main              - INFO    - params: settings.json and test mode
+2024-11-29 21:27:44,188 - symmetric_cipher  - INFO    - symmetric key was generated len = 32 bytes
+2024-11-29 21:27:44,188 - serialization     - INFO    - serialization to keys/symmetric/symmetric_key.txt
+2024-11-29 21:27:44,255 - asymmetric_cipher - INFO    - asymmetric key was generated len = 65537/2048 bytes
+2024-11-29 21:27:44,255 - serialization     - INFO    - serialization to keys/asymmetric/public.pem
+2024-11-29 21:27:44,256 - serialization     - INFO    - serialization to keys/asymmetric/private.pem
+2024-11-29 21:27:44,256 - symmetric_cipher  - INFO    - symmetric key was generated len = 16 bytes
+2024-11-29 21:27:44,256 - serialization     - INFO    - serialization to keys/symmetric/nonce.txt
+2024-11-29 21:27:44,256 - functional        - INFO    - reading from text/initial_text.txt
+2024-11-29 21:27:44,261 - serialization     - INFO    - deserialization from keys/symmetric/symmetric_key.txt
+2024-11-29 21:27:44,264 - functional        - INFO    - writing(bytes) to text/encrypted_text.txt
+2024-11-29 21:27:44,264 - symmetric_cipher  - INFO    - encrypt from text/initial_text.txt to text/encrypted_text.txt
+2024-11-29 21:27:44,264 - serialization     - INFO    - deserialization from keys/symmetric/symmetric_key.txt
+2024-11-29 21:27:44,268 - serialization     - INFO    - deserialization from keys/asymmetric/public.pem
+2024-11-29 21:27:44,268 - asymmetric_cipher - INFO    - encrypt from keys/symmetric/symmetric_key.txt to keys/symmetric/encrypted.txt
+2024-11-29 21:27:44,268 - functional        - INFO    - writing(bytes) to keys/symmetric/encrypted.txt
+2024-11-29 21:27:44,271 - serialization     - INFO    - deserialization from keys/symmetric/encrypted.txt
+2024-11-29 21:27:44,274 - serialization     - INFO    - deserialization from keys/asymmetric/private.pem
+2024-11-29 21:27:44,301 - asymmetric_cipher - INFO    - decrypt from keys/symmetric/encrypted.txt to keys/symmetric/decrypted.txt
+2024-11-29 21:27:44,301 - serialization     - INFO    - serialization to keys/symmetric/decrypted.txt
+2024-11-29 21:27:44,305 - functional        - INFO    - reading(bytes) from keys/symmetric/nonce.txt
+2024-11-29 21:27:44,308 - functional        - INFO    - reading(bytes) from text/encrypted_text.txt
+2024-11-29 21:27:44,308 - serialization     - INFO    - deserialization from keys/symmetric/symmetric_key.txt
+2024-11-29 21:27:44,308 - functional        - INFO    - writing to text/decrypted_text.txt
+2024-11-29 21:27:44,308 - symmetric_cipher  - INFO    - decrypt from text/encrypted_text.txt to text/decrypted_text.txt
+2024-11-29 21:27:44,308 - main              - INFO    - programm has ended
