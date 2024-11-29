@@ -16,7 +16,8 @@ from algoritms.serialization import Serialization
 from algoritms.functional import Functional
 
 
-logger = logging.getLogger("asymmetric_cipher")
+logger = logging.getLogger("info_logger")
+error_logger = logging.getLogger("error_logger")
 
 
 class Asymmetric:
@@ -52,18 +53,22 @@ class Asymmetric:
             path_to_symmetric_origin (str)    : path to file with original symmetric key
             path_to_symmetric_encripted (str) : path to save encripted symmetric key
         """
-        symmetric_key = Serialization.deserialize_symmetric_key( path_to_symmetric_origin )
-        public_key = Serialization.deserialize_public_key( path_to_public )
-        encripted_key = public_key.encrypt(
-            symmetric_key,
-            padding.OAEP(
-                mgf = padding.MGF1( algorithm = hashes.SHA256() ),
-                algorithm = hashes.SHA256(),
-                label = None,
-            ),
-        )
-        logger.info(f"encrypt from {path_to_symmetric_origin} to {path_to_symmetric_encripted}")
-        Functional.write_file_bytes( path_to_symmetric_encripted, encripted_key )
+        try:
+            symmetric_key = Serialization.deserialize_symmetric_key( path_to_symmetric_origin )
+            public_key = Serialization.deserialize_public_key( path_to_public )
+            encripted_key = public_key.encrypt(
+                symmetric_key,
+                padding.OAEP(
+                    mgf = padding.MGF1( algorithm = hashes.SHA256() ),
+                    algorithm = hashes.SHA256(),
+                    label = None,
+                ),
+            )
+            logger.info(f"encrypt from {path_to_symmetric_origin} to {path_to_symmetric_encripted}")
+            Functional.write_file_bytes( path_to_symmetric_encripted, encripted_key )
+        except Exception as error:
+            error_logger.error(f"{error}")
+        
 
     def decrypt(
         path_to_private             : str,
@@ -80,19 +85,23 @@ class Asymmetric:
         Returns:
             bytes: decrypted key
         """
-        symmetric_encripted = Serialization.deserialize_symmetric_key(
+        try:
+            symmetric_encripted = Serialization.deserialize_symmetric_key(
             path_to_symmetric_encripted
-        )
-        private_key = Serialization.deserialize_private_key( path_to_private )
-        decripted_key = private_key.decrypt(
-            symmetric_encripted,
-            padding.OAEP(
-                mgf = padding.MGF1( algorithm = hashes.SHA256() ),
-                algorithm = hashes.SHA256(),
-                label = None,
-            ),
-        )
-        logger.info(f"decrypt from {path_to_symmetric_encripted} to {path_to_symmetric_decripted}")
-        Serialization.serialize_symmetric_key( path_to_symmetric_decripted, decripted_key )
-        return decripted_key
+            )
+            private_key = Serialization.deserialize_private_key( path_to_private )
+            decripted_key = private_key.decrypt(
+                symmetric_encripted,
+                padding.OAEP(
+                    mgf = padding.MGF1( algorithm = hashes.SHA256() ),
+                    algorithm = hashes.SHA256(),
+                    label = None,
+                ),
+            )
+            logger.info(f"decrypt from {path_to_symmetric_encripted} to {path_to_symmetric_decripted}")
+            Serialization.serialize_symmetric_key( path_to_symmetric_decripted, decripted_key )
+            return decripted_key
+        except Exception as error:
+            error_logger.error(f"{error}")
+        
  

@@ -5,7 +5,8 @@ import json
 import logging
 
 
-logger = logging.getLogger("functional")
+logger = logging.getLogger("info_logger")
+error_logger = logging.getLogger("error_logger")
 
 
 class Functional:
@@ -29,7 +30,7 @@ class Functional:
             
             return data
         except Exception as error:
-            logger.error(f"error {error} while reading from {file_path}")
+            error_logger.error(f"{error}")
 
     def read_file_bytes( file_path: str ) -> str:
         """get file data
@@ -45,7 +46,7 @@ class Functional:
             
             return data
         except Exception as error:
-            logger.error(f"error {error} while reading(bytes) from {file_path}")
+            error_logger.error(f"{error}")
 
     def write_file(
         file_path : str,
@@ -62,7 +63,7 @@ class Functional:
                 file.write(data)
             
         except Exception as error:
-            logger.error(f"error {error} while writing to {file_path}")
+            error_logger.error(f"error {error} while writing to {file_path}")
 
     def write_file_bytes(
         file_path : str,
@@ -79,7 +80,7 @@ class Functional:
                 file.write(data)
             
         except Exception as error:
-            logger.error(f"error {error} while writing(bytes) to {file_path}")
+            error_logger.error(f"{error}")
 
     def read_json(path: str) -> dict:
         """get data from json file
@@ -93,5 +94,5 @@ class Functional:
                 logger.info(f"reading from {path}")
                 return json.load(file)
         except Exception as error:
-            logger.error(f"error {error} while reading from {path}")
+            error_logger.error(f"{error}")
  

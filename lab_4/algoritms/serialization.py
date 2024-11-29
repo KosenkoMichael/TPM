@@ -12,7 +12,8 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.primitives import serialization
 
 
-logger = logging.getLogger("serialization")
+logger = logging.getLogger("info_logger")
+error_logger = logging.getLogger("error_logger")
 
 
 class Serialization:
@@ -38,7 +39,7 @@ class Serialization:
                 key_file.write(key)
             
         except Exception as error:
-            logger.error(f"error {error} while serialization to {file_path}")
+            error_logger.error(f"{error}")
 
     def deserialize_symmetric_key( file_path: str ) -> bytes:
         """Deserialization of the symmetric encryption key
@@ -53,7 +54,7 @@ class Serialization:
                 return key_file.read()
             
         except Exception as error:
-            logger.error(f"error {error} while deserialization from {file_path}")
+            error_logger.error(f"{error}")
 
     def serialize_public_key(
             public_pem : str,
@@ -75,7 +76,7 @@ class Serialization:
                 )
             
         except Exception as error:
-            logger.error(f"error {error} while serialization to {public_pem}")
+            error_logger.error(f"{error}")
 
     def serialize_private_key(
         private_pem : str,
@@ -98,7 +99,7 @@ class Serialization:
                 )
             
         except Exception as error:
-            logger.error(f"error {error} while serialization to {private_pem}")
+            error_logger.error(f"{error}")
 
     def deserialize_public_key( public_pem: str ) -> rsa.RSAPublicKey:
         """RSA public key deserialization
@@ -114,7 +115,7 @@ class Serialization:
             
             return load_pem_public_key( public_bytes )
         except Exception as error:
-            logger.error(f"error {error} while deserialization from {public_pem}")
+            error_logger.error(f"{error}")
 
     def deserialize_private_key( private_pem: str ) -> rsa.RSAPrivateKey:
         """RSA private key deserialization
@@ -133,5 +134,5 @@ class Serialization:
                 password = None,
             )
         except Exception as error:
-            logger.error(f"error {error} while deserialization from {private_pem}")
+            error_logger.error(f"{error}")
  

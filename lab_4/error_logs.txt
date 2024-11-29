@@ -1,0 +1,4 @@
+2024-11-29 22:40:55,323 - error_logger      - main       - ERROR   - mode not_allow is not allow
+2024-11-29 22:41:30,762 - error_logger      - decrypt    - ERROR   - can't concat str to bytes
+2024-11-29 22:42:16,034 - error_logger      - read_json  - ERROR   - [Errno 2] No such file or directory: 'settings0.json'
+2024-11-29 22:42:44,490 - error_logger      - decrypt    - ERROR   - Invalid padding bytes.

@@ -21,23 +21,43 @@ def setup_logging()-> None:
     """
     initialize logging settings
     """
-    logging.basicConfig(
-        level=logging.DEBUG,
-        format="%(asctime)s - %(name)-17s - %(levelname)-7s - %(message)s",
-        handlers=[
-            RotatingFileHandler(
-                "logs.txt",
-                encoding="utf-8",
-                maxBytes=10_000,
-                backupCount=1
-            )
-        ]
+    info_logger = logging.getLogger("info_logger")
+    info_logger.setLevel(logging.INFO)
+    info_handler = RotatingFileHandler(
+        "info_logs.txt",
+        encoding="utf-8",
+        maxBytes=20_000,
+        backupCount=0
     )
+    info_handler.setFormatter(
+        logging.Formatter("%(asctime)s - %(name)-17s - %(funcName)-25s - %(levelname)-7s - %(message)s")
+    )
+    info_logger.addHandler(info_handler)
+
+    error_logger = logging.getLogger("error_logger")
+    error_logger.setLevel(logging.ERROR)
+    error_handler = RotatingFileHandler(
+        "error_logs.txt",
+        encoding="utf-8",
+        maxBytes=20_000,
+        backupCount=0,
+    )
+    error_handler.setFormatter(
+        logging.Formatter("%(asctime)s - %(name)-17s - %(funcName)-10s - %(levelname)-7s - %(message)s")
+    )
+    error_logger.addHandler(error_handler)
 
 
 def main():
+    modes = [
+        "key_generation",
+        "encryption",
+        "decryption",
+        "test",
+    ]
     setup_logging()
-    logger = logging.getLogger("main")
+    logger = logging.getLogger("info_logger")
+    error_logger = logging.getLogger("error_logger")
     logger.info("programm has started")
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -46,6 +66,10 @@ def main():
         help = "key_generation OR encryption OR decryption",
     )
     args = parser.parse_args()
+
+    if args.mode not in modes:
+        error_logger.error(f"mode {args.mode} is not allow")
+        return
 
     settings = Functional.read_json("settings.json")
 
